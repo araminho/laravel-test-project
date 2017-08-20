@@ -26,6 +26,28 @@ class AdminController extends Controller
     {
         $users = User::all();
 
-        return view('admin', ["users" => $users]);
+        return view('admin.users', ["users" => $users]);
+    }
+
+    public function editUser(User $user)
+    {
+        return view('admin.edit-user', compact('user'));
+    }
+
+    public function storeUser(Request $request, $id)
+    {
+        $this->validate(request(), [
+            'name' => 'required|string|max:255|AlphaNum',
+            'last_name' => 'required|string|max:255|AlphaNum',
+            'description' => 'string|nullable',
+        ]);
+
+        $user = User::find($id);
+        $user->name = $request->get('name');
+        $user->last_name = $request->get('last_name');
+        $user->description = $request->get('description');
+        $user->save();
+        return redirect('/admin');
+
     }
 }

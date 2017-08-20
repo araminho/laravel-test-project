@@ -30,4 +30,7 @@ Route::prefix('admin')->group(function () {
     Route::get('/login', 'Auth\AdminLoginController@showLoginForm')->name('admin.login');
     Route::post('/login', 'Auth\AdminLoginController@login')->name('admin.login.submit');
     Route::get('/logout','Auth\AdminLoginController@logout')->name('admin.logout');
+
+    Route::get('/edit-user/{user}','AdminController@editUser');
+    Route::post('/store-user/{user}', 'AdminController@storeUser');
 });

@@ -28,7 +28,9 @@
                             <td>{{$user->name}}</td>
                             <td>{{$user->last_name}}</td>
                             <td>{{$user->username}}</td>
-                            <td><a href="#" class="btn btn-default">Edit</a></td>
+                            <td>
+                                <a href="/admin/edit-user/{{$user->id}}" class="btn btn-default">Edit</a>
+                            </td>
                         </tr>
                     @endforeach
                 </table>
