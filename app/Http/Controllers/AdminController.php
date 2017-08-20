@@ -39,6 +39,7 @@ class AdminController extends Controller
         $this->validate(request(), [
             'name' => 'required|string|max:255|AlphaNum',
             'last_name' => 'required|string|max:255|AlphaNum',
+            'is_active' => 'required|boolean',
             'description' => 'string|nullable',
         ]);
 
@@ -46,8 +47,16 @@ class AdminController extends Controller
         $user->name = $request->get('name');
         $user->last_name = $request->get('last_name');
         $user->description = $request->get('description');
+        $user->is_active = $request->get('is_active');
         $user->save();
         return redirect('/admin');
+    }
 
+    public function deleteUser($id)
+    {
+        $user = User::find($id);
+        $user->delete();
+
+        return redirect('/admin');
     }
 }

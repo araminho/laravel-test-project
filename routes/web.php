@@ -33,4 +33,5 @@ Route::prefix('admin')->group(function () {
 
     Route::get('/edit-user/{user}','AdminController@editUser');
     Route::post('/store-user/{user}', 'AdminController@storeUser');
+    Route::get('/delete-user/{user}', 'AdminController@deleteUser');
 });

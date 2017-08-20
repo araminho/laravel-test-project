@@ -40,6 +40,31 @@
                                 </div>
                             </div>
 
+                            <div class="form-group{{ $errors->has('is_active') ? ' has-error' : '' }}">
+                                <label for="is_active" class="col-md-4 control-label">Is active?</label>
+
+                                <div class="col-md-6">
+                                    <div class="radio">
+                                        <label>
+                                            <input type="radio" name="is_active" value="1" {{ $user->is_active == 1 ? 'checked' : ''}}>
+                                            Yes
+                                        </label>
+                                    </div>
+                                    <div class="radio">
+                                        <label>
+                                            <input type="radio" name="is_active" value="0" {{ $user->is_active == 0 ? 'checked' : ''}}>
+                                            No
+                                        </label>
+                                    </div>
+
+                                    @if ($errors->has('is_active'))
+                                        <span class="help-block">
+                                            <strong>{{ $errors->first('is_active') }}</strong>
+                                        </span>
+                                    @endif
+                                </div>
+                            </div>
+
                             <div class="form-group{{ $errors->has('description') ? ' has-error' : '' }}">
                                 <label for="description" class="col-md-4 control-label">Description</label>
 
@@ -58,6 +83,7 @@
 
                             <div class="form-group">
                                 <div class="col-md-6 col-md-offset-4">
+                                    <a href="/admin" class="btn btn-default">Back</a>
                                     <button type="submit" class="btn btn-primary">
                                         Save
                                     </button>
