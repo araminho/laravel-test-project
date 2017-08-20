@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use Illuminate\Support\Facades\Input;
 
 class AdminController extends Controller
 {
@@ -24,9 +25,13 @@ class AdminController extends Controller
      */
     public function index()
     {
-        $users = User::all();
+        $perPage  = Input::get('perPage', 10);
+        $users = User::paginate($perPage);
 
-        return view('admin.users', ["users" => $users]);
+        return view('admin.users', [
+            "users" => $users->appends(Input::except('page')),
+            "perPage" => $perPage
+        ]);
     }
 
     public function editUser(User $user)

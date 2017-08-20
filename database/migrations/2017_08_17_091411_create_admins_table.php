@@ -26,7 +26,7 @@ class CreateAdminsTable extends Migration
 
         DB::table('admins')->insert([
             "name" => "SuperAdmin",
-            "email" => "admin@example.com",
+                "email" => "admin@example.com",
             "password" => Hash::make("admin123"),
             "created_at" => DB::raw('CURRENT_TIMESTAMP'),
             "updated_at" => DB::raw('CURRENT_TIMESTAMP'),

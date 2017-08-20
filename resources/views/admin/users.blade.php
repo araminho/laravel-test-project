@@ -12,6 +12,27 @@
                 </div>
             </div>
         </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <form method="get">
+
+                    <div class="form-group">
+                        <label for="perPage" class="col-md-2 control-label">Users per page</label>
+
+                        <div class="col-md-1">
+
+                            <select class="form-control" id="perPage" name="perPage">
+                                <option {{$perPage==10 ? "selected" : ""}}>10</option>
+                                <option {{$perPage==20 ? "selected" : ""}}>20</option>
+                                <option {{$perPage==50 ? "selected" : ""}}>50</option>
+                            </select>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
         <div class="row">
             <div class="col-md-12">
                 <table class="table" id="usersTable">
@@ -45,6 +66,11 @@
                 </table>
             </div>
 
+            <div class="row">
+                <div class="col-md-12">
+                    {!! $users->links() !!}
+                </div>
+            </div>
         </div>
     </div>
 @endsection
