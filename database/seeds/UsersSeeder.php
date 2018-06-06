@@ -22,6 +22,7 @@ class UsersSeeder extends Seeder
                 'last_name' => $faker->lastName,
                 'description' => $faker->sentence,
                 'username' => $faker->unique()->userName,
+                'email' => $faker->unique()->email,
                 'password' => $faker->password,
                 'is_active' => $faker->boolean,
             ]);
